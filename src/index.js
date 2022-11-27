@@ -10,7 +10,17 @@ const superAdminRoute = require('./routes/superAdmin');
 const app = express();
 const port = process.env.PORT || 3001;
 
-app.use(cors());
+app.use(
+	cors({
+		origin: [
+			'http://localhost:3000',
+			'https://localhost:3000',
+			process.env.CLIENT_URL,
+		],
+		optionsSuccessStatus: 200,
+		credentials: true,
+	})
+);
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cookieParser());
