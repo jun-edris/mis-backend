@@ -4,7 +4,10 @@ const Request = require('./../../models/request');
 const { pusher, transporter } = require('./../../utils');
 
 const app = express();
-app.use(cors());
+app.use(cors({
+		optionsSuccessStatus: 200,
+		credentials: true,
+	}));
 
 exports.completeReq = async (req, res) => {
 	try {
