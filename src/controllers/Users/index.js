@@ -13,10 +13,12 @@ const {
 } = require('./../../utils');
 
 const app = express();
-app.use(cors({
+app.use(
+	cors({
 		optionsSuccessStatus: 200,
 		credentials: true,
-	}));
+	})
+);
 app.use(cookieParser());
 
 exports.getRequests = async (req, res) => {
@@ -257,6 +259,7 @@ exports.login = async (req, res) => {
 
 			res.cookie('token', token, {
 				httpOnly: true,
+				secure: true,
 			});
 
 			res.json({
