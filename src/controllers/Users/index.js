@@ -260,6 +260,8 @@ exports.login = async (req, res) => {
 			res.cookie('token', token, {
 				httpOnly: true,
 				secure: true,
+				domain: process.env.CLIENT_URL,
+				sameSite:'none',
 			});
 
 			res.json({
